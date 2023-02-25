@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="UTF-8">
+	<title>App</title>
+	<link rel="stylesheet" href="build/style.css">
 </head>
 <body>
-
-<div id="root"></div>
-
-<script type="module" src="./public/js/neutralino.js"></script>
-<script type="module" src="./src/main.jsx"></script>
-
+	<div id="root">Ctrl + R To Reload. (This Only Occurs On Development Stage)</div>
+	<script src="js/neutralino.js"></script>
+	<script type="module" src="build/app.es.js" defer></script>
+	<script defer>
+		// bind ctrl + r to reload
+		document.onkeydown = function(e) {
+			if (e.keyCode == 0x52 && e.ctrlKey) window.location.reload();
+		};
+		Neutralino.init(); // do a init only once, since it the app would be reloaded many times and too many init calls will F-up
+	</script>
 </body>
 </html>
+
